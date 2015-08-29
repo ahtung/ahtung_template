@@ -1,7 +1,8 @@
 # template.rb
 
 # ask for ruby version
-ruby_version = ask('Which ruby version?')
+version_string = `ruby -v`
+ruby_version = /\d\.\d\.\d/.match(version_string).to_s
 
 # remove & recreate GEMFILE
 remove_file "Gemfile"
