@@ -1,5 +1,6 @@
 # template.rb
 
+# ask for ruby version
 ruby_version = ask('Which ruby version?')
 
 # remove & recreate GEMFILE
