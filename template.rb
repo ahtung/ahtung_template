@@ -38,3 +38,5 @@ gem_group :test do
   gem 'shoulda-matchers', require: false
   gem 'simplecov', require: false
 end
+
+add_source 'https://rails-assets.org'
