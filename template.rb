@@ -1,41 +1,58 @@
 # template.rb
 
-# GEMS
-gem 'puma'
-gem 'foreman'
-gem 'slim-rails'
-gem 'devise'
-gem 'omniauth-google-oauth2'
-gem 'sidekiq'
-gem 'pundit'
-gem 'sitemap_generator'
-gem 'meta-tags'
-gem 'roboto'
-gem 'rubocop'
-gem 'factory_girl_rails'
-gem 'faker'
+# remove & recreate GEMFILE
+remove_file "Gemfile"
+create_file 'Gemfile', <<-CODE
 
-# Development gems
-gem_group :development do
-  gem 'rubocop', require: false
-  gem 'brakeman', require: false
-  gem 'better_errors'
+source 'https://rubygems.org'
+
+ruby '2.2.1'
+
+gem 'rails', '4.2.4'
+gem 'pg'
+gem 'sass-rails', '~> 4.0.3'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'spring',        group: :development
+gem "puma"
+gem "foreman"
+gem "slim-rails"
+gem "devise"
+gem "omniauth-google-oauth2"
+gem "sidekiq"
+gem "pundit"
+gem "sitemap_generator"
+gem "meta-tags"
+gem "roboto"
+gem "rubocop"
+gem "factory_girl_rails"
+gem "faker"
+group :development do
+  gem "rubocop", require: false
+  gem "brakeman", require: false
+  gem "better_errors"
 end
 
-# Development & Test gems
-gem_group :development, :test do
-  gem 'pry-remote'
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'launchy'
-  gem 'database_cleaner'
-  gem 'selenium-webdriver'
+group :development, :test do
+  gem "pry-remote"
+  gem "rspec-rails"
+  gem "capybara"
+  gem "launchy"
+  gem "database_cleaner"
+  gem "selenium-webdriver"
 end
 
-gem_group :test do
-  gem 'shoulda-matchers', require: false
-  gem 'simplecov', require: false
+group :test do
+  gem "shoulda-matchers", require: false
+  gem "simplecov", require: false
 end
 
-# Rails assets source
-add_source 'https://rails-assets.org'
+source 'https://rails-assets.org' do
+
+end
+CODE
+
