@@ -3,6 +3,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'erubis'
 require 'circleci'
+require 'octokit'
 
 # Config
 environments = %w(staging production)
@@ -14,6 +15,18 @@ ruby_version = /\d\.\d\.\d/.match(version_string).to_s
 
 # GitHub
 git_username = ask('GitHub username?')
+git_organization = ask('GitHub organization?')
+git_password = ask('GitHub password?')
+
+Octokit.configure do |config|
+  config.login = git_username
+  config.password = git_password
+end
+
+user = Octokit.user
+user.login
+
+Octokit.create_repository(@app_name, organization: git_organization)
 
 # Circle CI
 token = ask('Circle CI token?')
