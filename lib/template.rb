@@ -100,9 +100,9 @@ open('Procfile.dev.env', 'a') { |f|
   end
 }
 # Omniauth configuration
-copy_file 'templates/omniauth_callbacks_controller.rb', 'app/controllers/users/omniauth_callbacks_controller.rb'
+copy_file "#{templates_path}/omniauth_callbacks_controller.rb", 'app/controllers/users/omniauth_callbacks_controller.rb'
 remove_file 'config/initializers/devise.rb'
-copy_file 'templates/devise.rb', 'config/initializers/devise.rb'
+copy_file "#{templates_path}/devise.rb", 'config/initializers/devise.rb'
 gsub_file 'config/routes.rb', /:users/, ":users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }"
 gsub_file 'app/models/user.rb', /devise :/, 'devise :omniauthable, omniauth_providers: [:google_oauth2], :'
 
