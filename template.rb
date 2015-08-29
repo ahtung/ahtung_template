@@ -80,8 +80,9 @@ rake 'db:setup'
 rake 'db:migrate'
 
 # Omniauth configuration
-create_file 'config/initializers/omniauth.rb', <<-CODE
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
-end
-CODE
+copy_file 'templates/omniauth_callbacks_controller.rb', 'app/controllers/users/omniauth_callbacks_controller.rb'
+remove_file 'config/initializers/devise.rb'
+copy_file 'templates/devise.rb', 'config/initializers/devise.rb'
+
+gsub_file 'config/routes.rb', /:users/, ":users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }"
+gsub_file 'app/models/user.rb', /devise :/, 'devise :omniauthable, omniauth_providers: [:google_oauth2], :'
