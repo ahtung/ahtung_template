@@ -90,3 +90,8 @@ rake 'db:setup'
 
 # Migrate DB
 rake 'db:migrate'
+
+# Foreman Configuration
+create_file 'Procfile.dev', 'web: rails s'
+create_file 'Procfile.dev.env'
+create_file 'Procfile', 'web: rails s'
