@@ -1,7 +1,5 @@
 # template.rb
 
-# README
-
 # GEMS
 gem 'puma'
 gem 'foreman'
@@ -11,8 +9,11 @@ gem 'omniauth-google-oauth2'
 gem 'sidekiq'
 gem 'pundit'
 gem 'sitemap_generator'
+gem 'meta-tags'
+gem 'roboto'
 gem 'rubocop'
 gem 'factory_girl_rails'
+gem 'faker'
 
 # Development gems
 gem_group :development do
@@ -23,13 +24,8 @@ end
 
 # Development & Test gems
 gem_group :development, :test do
-  gem 'byebug'
   gem 'pry-remote'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
   gem 'rspec-rails'
-  gem 'faker'
-  gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'
