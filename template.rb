@@ -3,8 +3,13 @@
 # ask for ruby version
 ruby_version = ask('Which ruby version?')
 
+# Circle CI
+copy_file 'circle.yml', 'circle.yml'
+copy_file 'script/deploy/staging', 'script/deploy/staging'
+copy_file 'script/deploy/production', 'script/deploy/production'
+
 # remove & recreate GEMFILE
-remove_file "Gemfile"
+remove_file 'Gemfile'
 create_file 'Gemfile', <<-CODE
 
 source 'https://rubygems.org'
