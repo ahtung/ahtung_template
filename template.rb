@@ -34,7 +34,6 @@ gem "rubocop"
 gem "factory_girl_rails"
 gem "faker"
 group :development do
-  gem "rubocop", require: false
   gem "brakeman", require: false
   gem "better_errors"
 end
