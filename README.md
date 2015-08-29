@@ -8,4 +8,4 @@ Template generator for ahtung
 
 ## Usage
 
-    rails new blog --database=postgresql -T -m template.rb
+    rails new blog --database=postgresql -T -m https://raw.githubusercontent.com/ahtung/ahtung_template/master/lib/template.rb
