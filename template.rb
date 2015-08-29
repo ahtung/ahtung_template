@@ -70,6 +70,9 @@ if yes?("Would you like to install Devise?")
   generate "devise", model_name
 end
 
+# Action mailer configuration for development
+environment 'config.action_mailer.default_url_options = {host: "http://localhost:3000"}', env: 'development'
+
 # Setup DB
 rake 'db:setup'
 
