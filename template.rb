@@ -1,13 +1,20 @@
 # template.rb
+require 'erubis'
 
-# ask for ruby version
+# Ruby
 version_string = `ruby -v`
 ruby_version = /\d\.\d\.\d/.match(version_string).to_s
 
 # Circle CI
 template_path = File.dirname(__FILE__)
 copy_file "#{template_path}/circle.yml", 'circle.yml'
-directory "#{template_path}/script/deploy", 'script/deploy'
+environments = %w(staging production)
+context = { app_name: @app_name }
+environments.each do |environment|
+  template = Erubis::Eruby.new(File.read("#{template_path}/script/deploy/#{environment}.erb"))
+  create_file "script/deploy/#{environment}", template.evaluate(context)
+  FileUtils.chmod "+x", "script/deploy/#{environment}"
+end
 
 # remove & recreate GEMFILE
 remove_file 'Gemfile'
