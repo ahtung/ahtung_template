@@ -5,14 +5,9 @@ version_string = `ruby -v`
 ruby_version = /\d\.\d\.\d/.match(version_string).to_s
 
 # Circle CI
-copy_file 'circle.yml', 'circle.yml'
-copy_file 'script/deploy/staging', 'script/deploy/staging'
-copy_file 'script/deploy/production', 'script/deploy/production'
-
-# Circle CI
-copy_file 'circle.yml', 'circle.yml'
-copy_file 'script/deploy/staging', 'script/deploy/staging'
-copy_file 'script/deploy/production', 'script/deploy/production'
+template_path = File.dirname(__FILE__)
+copy_file "#{template_path}/circle.yml", 'circle.yml'
+directory "#{template_path}/script/deploy", 'script/deploy'
 
 # remove & recreate GEMFILE
 remove_file 'Gemfile'
