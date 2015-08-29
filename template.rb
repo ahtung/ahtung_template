@@ -56,3 +56,5 @@ source 'https://rails-assets.org' do
 end
 CODE
 
+# bundle
+run 'bundle install'
