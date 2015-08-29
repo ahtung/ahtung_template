@@ -1,12 +1,14 @@
 # template.rb
 
+ruby_version = ask('Which ruby version?')
+
 # remove & recreate GEMFILE
 remove_file "Gemfile"
 create_file 'Gemfile', <<-CODE
 
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+ruby '#{ruby_version}'
 
 gem 'rails', '4.2.4'
 gem 'pg'
