@@ -78,3 +78,10 @@ rake 'db:setup'
 
 # Migrate DB
 rake 'db:migrate'
+
+# Omniauth configuration
+create_file 'config/initializers/omniauth.rb', <<-CODE
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
+end
+CODE
