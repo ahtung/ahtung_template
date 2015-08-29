@@ -5,7 +5,7 @@ version_string = `ruby -v`
 ruby_version = /\d\.\d\.\d/.match(version_string).to_s
 
 # remove & recreate GEMFILE
-remove_file "Gemfile"
+remove_file 'Gemfile'
 create_file 'Gemfile', <<-CODE
 
 source 'https://rubygems.org'
@@ -63,15 +63,15 @@ CODE
 run 'bundle install'
 
 # Devise configuration
-if yes?("Would you like to install Devise?")
-  generate "devise:install"
-  model_name = ask("What would you like the user model to be called? [user]")
-  model_name = "User" if model_name.blank?
-  generate "devise", model_name
+if yes?('Would you like to install Devise?')
+  generate 'devise:install'
+  model_name = ask('What would you like the user model to be called? [User]')
+  model_name = 'User' if model_name.blank?
+  generate 'devise', model_name
 end
 
 # Action mailer configuration for development
-environment 'config.action_mailer.default_url_options = {host: "http://localhost:3000"}', env: 'development'
+environment "config.action_mailer.default_url_options = { host: 'http://localhost:3000' }", env: 'development'
 
 # Setup DB
 rake 'db:setup'
