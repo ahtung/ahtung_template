@@ -59,3 +59,9 @@ CODE
 
 # bundle
 run 'bundle install'
+
+# Setup DB
+rake 'db:setup'
+
+# Migrate DB
+rake 'db:migrate'
