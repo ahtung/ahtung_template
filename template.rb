@@ -97,6 +97,12 @@ rake 'db:setup'
 rake 'db:migrate'
 
 # Foreman Configuration
+create_file 'Procfile', 'web: rails s'
 create_file 'Procfile.dev', 'web: rails s'
 create_file 'Procfile.dev.env'
-create_file 'Procfile', 'web: rails s'
+
+open('Procfile.dev.env', 'a') { |f|
+  envs.each do |key, value|
+    f << "#{key.upcase}=#{value}\n"
+  end
+}
