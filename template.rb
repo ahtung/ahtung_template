@@ -101,8 +101,12 @@ create_file 'Procfile', 'web: rails s'
 create_file 'Procfile.dev', 'web: rails s'
 create_file 'Procfile.dev.env'
 
+# Meanwhile set heroku env variables
+`heroku login`
+`heroku create #{@app_name}`
 open('Procfile.dev.env', 'a') { |f|
   envs.each do |key, value|
     f << "#{key.upcase}=#{value}\n"
+    `heroku config:set #{key.upcase}=#{value} --app #{@app_name}`
   end
 }
