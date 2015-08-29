@@ -14,12 +14,14 @@ gem 'sitemap_generator'
 gem 'rubocop'
 gem 'factory_girl_rails'
 
+# Development gems
 gem_group :development do
   gem 'rubocop', require: false
   gem 'brakeman', require: false
   gem 'better_errors'
 end
 
+# Development & Test gems
 gem_group :development, :test do
   gem 'byebug'
   gem 'pry-remote'
@@ -39,4 +41,5 @@ gem_group :test do
   gem 'simplecov', require: false
 end
 
+# Rails assets source
 add_source 'https://rails-assets.org'
