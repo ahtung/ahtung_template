@@ -1,0 +1,8 @@
+#!/bin/bash
+set -x
+set -e
+
+git push git@heroku.com:<%= @app_name %>.git develop:master
+heroku run rake db:migrate --app <%= @app_name %>
+heroku run rake db:seed --app <%= @app_name %>
+heroku run rake sitemap:refresh --app <%= @app_name %>
