@@ -2,6 +2,6 @@
 set -x
 set -e
 
-git push git@heroku.com:<%= 'opotto' %>.git master
-heroku run rake db:migrate --app <%= 'opotto' %>
-heroku run rake sitemap:refresh --app <%= 'opotto' %>
+git push git@heroku.com:<%= @app_name %>.git master
+heroku run rake db:migrate --app <%= @app_name %>
+heroku run rake sitemap:refresh --app <%= @app_name %>
