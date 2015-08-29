@@ -62,6 +62,14 @@ CODE
 # bundle
 run 'bundle install'
 
+# Devise configuration
+if yes?("Would you like to install Devise?")
+  generate "devise:install"
+  model_name = ask("What would you like the user model to be called? [user]")
+  model_name = "User" if model_name.blank?
+  generate "devise", model_name
+end
+
 # Setup DB
 rake 'db:setup'
 
