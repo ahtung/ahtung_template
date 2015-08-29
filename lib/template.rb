@@ -7,6 +7,10 @@ require 'circleci'
 # Config
 environments = %w(staging production)
 templates_path = File.expand_path("../../templates", __FILE__)
+envs = {
+  google_client_secret: '',
+  google_client_id: ''
+}
 
 # Ruby
 version_string = `ruby -v`
@@ -67,3 +71,18 @@ rake 'db:setup'
 
 # Migrate DB
 rake 'db:migrate'
+
+# Foreman Configuration
+create_file 'Procfile', 'web: rails s'
+create_file 'Procfile.dev', 'web: rails s'
+create_file 'Procfile.dev.env'
+
+# Meanwhile create the app on heroku and set the variables
+`heroku login`
+`heroku create #{@app_name}`
+open('Procfile.dev.env', 'a') { |f|
+  envs.each do |key, value|
+    f << "#{key.upcase}=#{value}\n"
+    `heroku config:set #{key.upcase}=#{value} --app #{@app_name}`
+  end
+}
