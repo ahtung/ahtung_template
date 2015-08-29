@@ -1,0 +1,8 @@
+#!/bin/bash
+set -x
+set -e
+
+git push git@heroku.com:<%= 'opotto-staging' %>.git develop:master
+heroku run rake db:migrate --app <%= 'opotto-staging' %>
+heroku run rake db:seed --app <%= 'opotto-staging' %>
+heroku run rake sitemap:refresh --app <%= 'opotto-staging' %>
