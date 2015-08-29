@@ -1,6 +1,11 @@
 # template.rb
 require 'erubis'
 
+envs = {
+  google_client_secret: 'oYkScjLCf_hly4rEodNFhqm1',
+  google_client_id: '752284178735-qr40h7oej1ahv23ofl550v7961bmpu8g.apps.googleusercontent.com'
+}
+
 # Ruby
 version_string = `ruby -v`
 ruby_version = /\d\.\d\.\d/.match(version_string).to_s
