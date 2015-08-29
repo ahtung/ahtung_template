@@ -101,7 +101,7 @@ create_file 'Procfile', 'web: rails s'
 create_file 'Procfile.dev', 'web: rails s'
 create_file 'Procfile.dev.env'
 
-# Meanwhile set heroku env variables
+# Meanwhile create the app on heroku and set the variables
 `heroku login`
 `heroku create #{@app_name}`
 open('Procfile.dev.env', 'a') { |f|
