@@ -118,12 +118,12 @@ rake 'db:setup'
 rake 'db:migrate'
 
 # Git
-git :init
 remove_file '.gitignore'
 get "https://raw.githubusercontent.com/github/gitignore/master/Rails.gitignore", ".gitignore"
+git :init
 git add: '.'
 git commit: '-m First commit!'
-git remote: "add origin git@github.com:dunyakirkali/#{@app_name}.git"
+git remote: "add origin git@github.com:#{git_username}/#{@app_name}.git"
 git remote: "add staging git@heroku.com:#{@app_name}-staging.git"
 git remote: "add production git@heroku.com:#{@app_name}.git"
 git push: 'origin master'
