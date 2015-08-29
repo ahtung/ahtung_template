@@ -93,7 +93,8 @@ rake 'db:migrate'
 
 # Git
 git :init
-get "https://github.com/github/gitignore/blob/master/Rails.gitignore", ".gitignore"
+remove_file '.gitignore'
+get "https://raw.githubusercontent.com/github/gitignore/master/Rails.gitignore", ".gitignore"
 git add: '.'
 git commit: '-m First commit!'
 git remote: "add origin git@github.com:dunyakirkali/#{@app_name}.git"
